@@ -6,6 +6,7 @@
 
 :root {
 	--primary-color: #ee162d;
+	--secondary-color: #af0e21;
 }
 
 ::selection {
@@ -13,6 +14,7 @@
 	color: #fff;
 }
 
+/* GENERAL */
 .container {
 	width: 100%;
 	height: 100vh;
@@ -21,6 +23,7 @@
 	align-items: center;
 }
 
+/* CARD */
 .card {
 	display: flex;
 	flex-direction: column;
@@ -31,12 +34,13 @@
 	height: 20em;
 }
 
+/* FORM */
 .energy_form {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: space-around;
-	margin: 3em;
+	margin: 1em;
 }
 
 .consumption_form_group {
@@ -44,39 +48,58 @@
 }
 
 .form_group {
+	margin: 3em;
 	position: relative;
 }
 
-.form_group {
-	margin: 5em;
-}
-
+/* INPUTS */
 .form_group input {
 	padding: 1em;
 	border-radius: 5px;
 	border: 2px solid #eee;
 }
 
+.form_group label {
+	position: absolute;
+	bottom: 0.8em;
+	left: 0.8em;
+	transition: all 0.15s ease-in-out;
+	background-color: #fff;
+	padding: 0 0.3em;
+	user-select: none;
+}
+
+.form_group label:hover {
+	cursor: text;
+}
+
+/* INPUT FOCUS EFFECT */
 .form_group input:focus {
 	outline: none;
 	border: 2px solid var(--primary-color);
 }
 
 .form_group input:focus + label {
-	transform: translateY(-2.6em);
+	transform: translateY(-2.65em);
 	font-size: 0.7em;
 	color: var(--primary-color);
 }
 
-.form_group label {
-	position: absolute;
-	bottom: 0.8em;
-	left: 0.8em;
-	transition: all 0.2s ease-in-out;
-	background-color: #fff;
-	padding: 0 0.3em;
+/* SUBMIT BUTTON */
+.energy_form button.submit_button {
+	border-radius: 2.5em;
+	background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+	color: #fff;
+	padding: 0.75em 2.5em;
+	border: none;
+	font-size: 1.2em;
+	margin: 1em;
+	font-weight: 600;
 }
 
-.form_group label:hover {
-	cursor: text;
+.energy_form button.submit_button:hover {
+	cursor: pointer;
+	transition: all 0.15s ease-in-out;
+	transform: scale(1.05);
+	background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
 }
