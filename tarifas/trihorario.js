@@ -7,7 +7,7 @@ export const trihorario = [
 	{ power: 13.8, powerPrice: 0.6339, edgeHours: 0.1993, fullHours: 0.0811, emptyHours: 0.0327 },
 	{ power: 17.25, powerPrice: 0.7923, edgeHours: 0.1993, fullHours: 0.0811, emptyHours: 0.0327 },
 	{ power: 20.7, powerPrice: 0.9508, edgeHours: 0.1993, fullHours: 0.0811, emptyHours: 0.0327 },
-	{ power: 27.6, powerPrice: 1.2677, edgeHours: 0.1897, fullHours: 0.0718, emptyHours: 0.0198 },
-	{ power: 34.5, powerPrice: 1.5847, edgeHours: 0.1897, fullHours: 0.0718, emptyHours: 0.0198 },
-	{ power: 41.4, powerPrice: 1.9016, edgeHours: 0.1897, fullHours: 0.0718, emptyHours: 0.0198 },
+	{ power: 27.6, powerPrice: 1.2677, edgeHours: 0.1987, fullHours: 0.0718, emptyHours: 0.0198 },
+	{ power: 34.5, powerPrice: 1.5847, edgeHours: 0.1987, fullHours: 0.0718, emptyHours: 0.0198 },
+	{ power: 41.4, powerPrice: 1.9016, edgeHours: 0.1987, fullHours: 0.0718, emptyHours: 0.0198 },
 ];
