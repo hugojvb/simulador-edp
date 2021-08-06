@@ -60,19 +60,20 @@
 /* INPUTS */
 .form_group input {
 	padding: 1em;
-	border-radius: 1em;
-	border: 2px solid #ddd;
+	border-radius: 0.7em;
+	border: 1px solid #ddd;
 	font-weight: 600;
 }
 
 .form_group label {
 	position: absolute;
-	bottom: 0.8em;
-	left: 0.8em;
+	bottom: 0.9em;
+	left: 0.6em;
 	transition: all 0.15s ease-in-out;
 	background-color: #fff;
-	padding: 0 0.3em;
+	padding: 0 0.2em;
 	user-select: none;
+	font-size: 0.9em;
 }
 
 .form_group label:hover {
@@ -80,18 +81,18 @@
 }
 
 .form_group input:hover {
-	border: 2px solid var(--tertiary-color);
+	border: 1px solid var(--tertiary-color);
 }
 
 /* INPUT FOCUS EFFECT */
 .form_group input:focus {
 	outline: none;
-	border: 2px solid var(--primary-color);
+	border: 1px solid var(--primary-color);
 }
 
 .form_group input:not(:placeholder-shown) + label,
 .form_group input:focus + label {
-	transform: translateY(-2.65em);
+	transform: translateY(-2.4em);
 	font-size: 0.7em;
 	color: var(--primary-color);
 }
