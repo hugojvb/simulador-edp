@@ -53,12 +53,28 @@
 
 .form_group input {
 	padding: 1em;
+	border-radius: 5px;
+	border: 2px solid #eee;
+}
+
+.form_group input:focus {
+	outline: none;
+	border: 2px solid var(--primary-color);
+}
+
+.form_group input:focus + label {
+	transform: translateY(-2.6em);
+	font-size: 0.7em;
+	color: var(--primary-color);
 }
 
 .form_group label {
 	position: absolute;
 	bottom: 0.8em;
-	left: 1em;
+	left: 0.8em;
+	transition: all 0.2s ease-in-out;
+	background-color: #fff;
+	padding: 0 0.3em;
 }
 
 .form_group label:hover {
