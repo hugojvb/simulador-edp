@@ -7,6 +7,7 @@
 :root {
 	--primary-color: #ee162d;
 	--secondary-color: #af0e21;
+	--tertiary-color: #fcd1d6;
 }
 
 ::selection {
@@ -28,6 +29,10 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+}
+
+.title {
+	font-weight: 100;
 }
 
 .logo {
@@ -55,8 +60,8 @@
 /* INPUTS */
 .form_group input {
 	padding: 1em;
-	border-radius: 5px;
-	border: 2px solid #eee;
+	border-radius: 1em;
+	border: 2px solid #ddd;
 }
 
 .form_group label {
@@ -73,12 +78,17 @@
 	cursor: text;
 }
 
+.form_group input:hover {
+	border: 2px solid var(--tertiary-color);
+}
+
 /* INPUT FOCUS EFFECT */
 .form_group input:focus {
 	outline: none;
 	border: 2px solid var(--primary-color);
 }
 
+.form_group input:not(:placeholder-shown) + label,
 .form_group input:focus + label {
 	transform: translateY(-2.65em);
 	font-size: 0.7em;
@@ -101,5 +111,5 @@
 	cursor: pointer;
 	transition: all 0.15s ease-in-out;
 	transform: scale(1.05);
-	background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+	background: linear-gradient(50deg, var(--primary-color), var(--secondary-color));
 }
