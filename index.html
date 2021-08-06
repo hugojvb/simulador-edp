@@ -6,9 +6,38 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Simulador EDP 2021</title>
 		<link rel="stylesheet" href="global.css" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet" />
 	</head>
 	<body>
-		<h1>test</h1>
+		<div class="container">
+			<div class="card">
+				<img src="edp.jpg" alt="edp" class="logo" />
+				<h1>Simulador de Preço</h1>
+				<form class="energy_form">
+					<div class="form_group">
+						<input placeholder=" " type="number" name="power" id="power" />
+						<label for="power">Potência (kVA)</label>
+					</div>
+					<div class="consumption_form_group">
+						<div class="form_group">
+							<input placeholder=" " type="number" name="emptyHours" id="emptyHours" />
+							<label for="emptyHours">Vazio</label>
+						</div>
+						<div class="form_group">
+							<input placeholder=" " type="number" name="fullHours" id="fullHours" />
+							<label for="fullHours">Cheia</label>
+						</div>
+						<div class="form_group">
+							<input placeholder=" " type="number" name="edgeHours" id="edgeHours" />
+							<label for="edgeHours">Ponta</label>
+						</div>
+					</div>
+					<button class="submit_button" type="submit">Calcular</button>
+				</form>
+			</div>
+		</div>
 		<script src="calculador.js"></script>
 	</body>
 </html>

@@ -1,4 +1,4 @@
-export const simples = [
+module.exports = [
 	{ power: 1.15, powerPrice: 0.0529, energyPrice: 0.0786 },
 	{ power: 2.3, powerPrice: 0.1055, energyPrice: 0.0786 },
 	{ power: 3.45, powerPrice: 0.1585, energyPrice: 0.0786 },

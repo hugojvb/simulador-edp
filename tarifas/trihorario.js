@@ -1,4 +1,4 @@
-export const trihorario = [
+module.exports = [
 	{ power: 3.45, powerPrice: 0.1585, edgeHours: 0.1993, fullHours: 0.0811, emptyHours: 0.0327 },
 	{ power: 4.6, powerPrice: 0.2114, edgeHours: 0.1993, fullHours: 0.0811, emptyHours: 0.0327 },
 	{ power: 5.75, powerPrice: 0.264, edgeHours: 0.1993, fullHours: 0.0811, emptyHours: 0.0327 },

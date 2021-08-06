@@ -1,4 +1,66 @@
 * {
 	margin: 0;
 	box-sizing: border-box;
+	font-family: "Roboto", sans-serif;
+}
+
+:root {
+	--primary-color: #ee162d;
+}
+
+::selection {
+	background-color: var(--primary-color);
+	color: #fff;
+}
+
+.container {
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.card {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.logo {
+	height: 20em;
+}
+
+.energy_form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-around;
+	margin: 3em;
+}
+
+.consumption_form_group {
+	display: flex;
+}
+
+.form_group {
+	position: relative;
+}
+
+.form_group {
+	margin: 5em;
+}
+
+.form_group input {
+	padding: 1em;
+}
+
+.form_group label {
+	position: absolute;
+	bottom: 0.8em;
+	left: 1em;
+}
+
+.form_group label:hover {
+	cursor: text;
 }
