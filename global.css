@@ -57,12 +57,34 @@
 	position: relative;
 }
 
+/* POWER SELECT */
+
+.power_label {
+	margin: 1em;
+}
+
+.power_select {
+	-webkit-appearance: none;
+	padding: 7px 40px 7px 12px;
+	width: 40%;
+	border: 1px solid #ddd;
+	border-radius: 0.7em;
+	box-shadow: 0 1px 3px -2px #9098a9;
+	cursor: pointer;
+	font-family: inherit;
+	transition: all 0.15s ease-in-out;
+	padding: 1em;
+	font-size: 0.9em;
+	outline: none;
+}
+
 /* INPUTS */
 .form_group input {
 	padding: 1em;
 	border-radius: 0.7em;
 	border: 1px solid #ddd;
 	font-weight: 600;
+	box-shadow: 0 1px 3px -2px #9098a9;
 }
 
 .form_group label {
@@ -71,7 +93,7 @@
 	left: 0.6em;
 	transition: all 0.15s ease-in-out;
 	background-color: #fff;
-	padding: 0 0.2em;
+	padding: 0 0.3em;
 	user-select: none;
 	font-size: 0.9em;
 }
