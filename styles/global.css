@@ -20,13 +20,29 @@
 	color: #fff;
 }
 
-/* GENERAL */
+/* CONTAINER */
 .container {
 	width: 100%;
 	height: 100vh;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+
+/* CARD */
+.card {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.title {
+	font-weight: 100;
+}
+
+.logo {
+	height: 20em;
+	user-select: none;
 }
 
 /* FORM */

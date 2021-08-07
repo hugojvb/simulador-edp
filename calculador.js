@@ -2,11 +2,11 @@
 // const bihorario = require("./tarifas/bihorario");
 // const trihorario = require("./tarifas/trihorario");
 
-const optionsDiv = document.querySelector("#options");
-const options = document.querySelectorAll("#options .option");
-const selectedValue = document.querySelector("#selected_value");
+const optionsDiv = document.querySelector(".options");
+const options = document.querySelectorAll(".options .option");
+const selectedValue = document.querySelector(".selected_value");
 const submitButton = document.querySelector(".submit_button");
-const selectViewButton = document.querySelector("#select_view_button");
+const selectViewButton = document.querySelector(".select_view_button");
 
 selectedValue.innerHTML = options[2].children[1].innerHTML;
 console.log(options[2].children[1]);
