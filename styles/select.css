@@ -60,6 +60,27 @@
 	z-index: 3;
 }
 
+#select_view_button:checked ~ #select_button .arrow {
+	transform: rotate(180deg);
+	transition: transform 0.2s ease-in-out;
+}
+
+#select_view_button ~ #select_button .arrow {
+	transition: transform 0.2s ease-in-out;
+}
+
+#select_view_button:checked ~ #options .label {
+	display: block;
+	padding: 12px 14px;
+}
+
+#select_view_button:checked ~ #options {
+	border: 1px solid #ddd;
+	border-radius: 0.7em;
+	max-height: 9.5em;
+	overflow: overlay;
+}
+
 #selected_value {
 	font-size: 0.9em;
 	line-height: 1;
@@ -97,27 +118,6 @@
 	transition: 0.3s ease all;
 	font-weight: 600;
 	font-size: 0.8em;
-}
-
-#select_view_button:checked ~ #select_button .arrow {
-	transform: rotate(180deg);
-	transition: transform 0.2s ease-in-out;
-}
-
-#select_view_button ~ #select_button .arrow {
-	transition: transform 0.2s ease-in-out;
-}
-
-#select_view_button:checked ~ #options .label {
-	display: block;
-	padding: 12px 14px;
-}
-
-#select_view_button:checked ~ #options {
-	border: 1px solid #ddd;
-	border-radius: 0.7em;
-	max-height: 9.5em;
-	overflow: overlay;
 }
 
 input[type="radio"] {

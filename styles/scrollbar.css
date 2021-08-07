@@ -1,0 +1,41 @@
+/* SCROLLBAR */
+
+::-webkit-scrollbar {
+	width: 0.6rem;
+	background-color: transparent;
+}
+
+::-webkit-scrollbar-track {
+	background-color: transparent;
+	margin-top: 0.2em;
+	margin-bottom: 0.2em;
+}
+
+::-webkit-scrollbar-track-end {
+	background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #ddd;
+	border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: #aaa;
+}
+
+/* CARD */
+.card {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.title {
+	font-weight: 100;
+}
+
+.logo {
+	height: 20em;
+	user-select: none;
+}

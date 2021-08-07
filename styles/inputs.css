@@ -1,0 +1,40 @@
+/* INPUTS */
+.form_group input {
+	padding: 1em;
+	border-radius: 0.7em;
+	border: 1px solid #ddd;
+	font-weight: 600;
+	box-shadow: 0 1px 3px -2px #9098a9;
+}
+
+.form_group label {
+	position: absolute;
+	bottom: 0.9em;
+	left: 0.6em;
+	transition: all 0.15s ease-in-out;
+	background-color: #fff;
+	padding: 0 0.3em;
+	user-select: none;
+	font-size: 0.9em;
+}
+
+.form_group label:hover {
+	cursor: text;
+}
+
+.form_group input:hover {
+	border: 1px solid var(--tertiary-color);
+}
+
+/* INPUT FOCUS EFFECT */
+.form_group input:focus {
+	outline: none;
+	border: 1px solid var(--primary-color);
+}
+
+.form_group input:not(:placeholder-shown) + label,
+.form_group input:focus + label {
+	transform: translateY(-2.4em);
+	font-size: 0.7em;
+	color: var(--primary-color);
+}
