@@ -37,6 +37,7 @@
 
 .logo {
 	height: 20em;
+	user-select: none;
 }
 
 /* FORM */
@@ -66,7 +67,7 @@
 .arrow {
 	position: absolute;
 	right: 12px;
-	top: 1em;
+	top: 0.8em;
 	width: 1em;
 	height: 1em;
 	stroke-width: 2px;
@@ -84,8 +85,7 @@
 }
 
 #select_box {
-	border: 1px solid #e2eded;
-	border-color: #eaf1f1 #e4eded #dbe7e7 #e4eded;
+	border: 1px solid #ddd;
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -93,6 +93,8 @@
 	width: 300px;
 	height: 42px;
 	margin: 0 auto 0 auto;
+	border-radius: 0.7em;
+	box-shadow: 0 1px 3px -2px #9098a9;
 }
 
 #select_button {
@@ -100,7 +102,7 @@
 	height: 16px;
 	padding: 12px 14px;
 	background-color: #fff;
-	border-radius: 4px;
+	border-radius: 0.7em;
 	cursor: pointer;
 }
 
@@ -139,11 +141,21 @@
 	margin: 0 auto;
 	background-color: #fff;
 	border-radius: 4px;
+	animation-name: HideList;
+	animation-duration: 1s;
+	animation-delay: 1s;
+	animation-fill-mode: forwards;
+	animation-timing-function: step-start;
+	box-shadow: 0 15px 30px -10px transparentize(#000, 0.9);
 }
 
-#select_view_button:checked ~ #options {
-	border: 1px solid #e2eded;
-	border-color: #eaf1f1 #e4eded #dbe7e7 #e4eded;
+@keyframes HideList {
+	from {
+		transform: scaleY(1);
+	}
+	to {
+		transform: scaleY(0);
+	}
 }
 
 .option {
@@ -151,6 +163,7 @@
 	line-height: 1;
 	transition: 0.3s ease all;
 	z-index: 2;
+	background-color: #fff;
 }
 
 .label {
@@ -160,24 +173,26 @@
 	transition: 0.3s ease all;
 }
 
-#select_view_button:checked ~ #options .label {
+#select_view_button:focus ~ #select_button .arrow {
+	transform: rotate(180deg);
+	transition: transform 0.2s ease-in-out;
+}
+
+#select_view_button ~ #select_button .arrow {
+	transition: transform 0.2s ease-in-out;
+}
+
+#select_view_button:focus ~ #options .label {
 	display: block;
 	padding: 12px 14px;
 }
 
-.s-c {
-	position: absolute;
-	left: 0;
-	width: 100%;
-	height: 50%;
-}
-
-.s-c.top {
-	top: 0;
-}
-
-.s-c.bottom {
-	bottom: 0;
+#select_view_button:focus ~ #options {
+	border: 1px solid #ddd;
+	border-radius: 0.7em;
+	max-height: 9.5em;
+	overflow-y: auto;
+	animation: none;
 }
 
 input[type="radio"] {
@@ -185,15 +200,10 @@ input[type="radio"] {
 	right: 0;
 	left: 0;
 	width: 100%;
-	height: 50%;
+	height: 100%;
 	margin: 0;
 	opacity: 0;
 	cursor: pointer;
-}
-
-.s-c:hover ~ i {
-	color: #fff;
-	opacity: 0;
 }
 
 .s-c:hover {
@@ -211,24 +221,13 @@ input[type="radio"] {
 	transform: scale(0);
 }
 
-.option input[type="radio"]:checked ~ .opt-val {
-	opacity: 1;
-	transform: scale(1);
-}
-
-.option input[type="radio"]:checked ~ i {
-	top: 0;
-	bottom: auto;
-	opacity: 1;
-	animation: unset;
-}
-
-.option input[type="radio"]:checked ~ i,
-.option input[type="radio"]:checked ~ .label {
+.option input[type="radio"]:focus ~ .label,
+.option input[type="radio"]:hover ~ .label {
 	color: #fff;
+	transition: color 0s ease-in-out;
 }
 
-.option input[type="radio"]:checked ~ .label:before {
+.option input[type="radio"]:focus ~ .label:before {
 	content: "";
 	position: absolute;
 	top: 0;
@@ -236,70 +235,20 @@ input[type="radio"] {
 	bottom: 0;
 	left: 0;
 	z-index: -1;
-}
-
-#select_view_button:not(:checked) ~ #options .option input[type="radio"]:checked ~ .opt-val {
-	top: -30px;
-}
-
-.option input[type="radio"]:checked ~ .label:before {
 	background-color: #000;
-	border-radius: 4px 4px 0 0;
+	color: white;
 }
 
-.option input[type="radio"]:checked ~ .opt-val {
-	top: -31px;
-}
-
-#option_bg {
+.option input[type="radio"]:hover ~ .label:before {
+	content: "";
 	position: absolute;
 	top: 0;
 	right: 0;
+	bottom: 0;
 	left: 0;
-	height: 40px;
-	transition: 0.3s ease all;
-	z-index: 1;
-	display: none;
-}
-
-#select_view_button:checked ~ #options #option-bg {
-	display: block;
-}
-
-.option:hover .label {
-	color: #fff;
-}
-
-.option:nth-child(1):hover ~ #option-bg {
-	top: 0;
-	background-color: #000;
-	border-radius: 4px 4px 0 0;
-}
-
-.option:nth-child(2):hover ~ #option-bg {
-	top: 40px;
-	background-color: #ea4c89;
-}
-
-.option:nth-child(3):hover ~ #option-bg {
-	top: 80px;
-	background-color: #0057ff;
-}
-
-.option:nth-child(4):hover ~ #option-bg {
-	top: 120px;
-	background-color: #32c766;
-}
-
-.option:nth-child(5):hover ~ #option-bg {
-	top: 160px;
-	background-color: #f48024;
-}
-
-.option:nth-child(6):hover ~ #option-bg {
-	top: 200px;
-	background-color: #006400;
-	border-radius: 0 0 4px 4px;
+	z-index: -1;
+	background-color: var(--primary-color);
+	color: white;
 }
 
 /* INPUTS */
