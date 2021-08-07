@@ -2,18 +2,28 @@
 // const bihorario = require("./tarifas/bihorario");
 // const trihorario = require("./tarifas/trihorario");
 
+const optionsDiv = document.querySelector("#options");
 const options = document.querySelectorAll("#options .option");
 const selectedValue = document.querySelector("#selected_value");
-const submit_button = document.querySelector(".submit_button");
+const submitButton = document.querySelector(".submit_button");
+const selectViewButton = document.querySelector("#select_view_button");
+
+selectedValue.innerHTML = options[2].children[1].innerHTML;
+console.log(options[2].children[1]);
 
 options.forEach((element) => {
-	if (element.children[0].checked) selectedValue.innerHTML = element.innerText;
 	element.addEventListener("click", function (e) {
-		console.log(element.children[0].value);
+		selectedValue.innerHTML = element.children[1].innerHTML;
 	});
 });
 
+optionsDiv.addEventListener("click", function (e) {
+	if (e.target != optionsDiv && e.target.parentNode != optionsDiv) {
+		selectViewButton.checked = false;
+	}
+});
+
 // SUBMIT FORM
-submit_button.addEventListener("click", function (e) {
+submitButton.addEventListener("click", function (e) {
 	e.preventDefault();
 });
