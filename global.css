@@ -24,6 +24,32 @@
 	align-items: center;
 }
 
+/* SCROLLBAR */
+
+::-webkit-scrollbar {
+	width: 0.6rem;
+	background-color: transparent;
+}
+
+::-webkit-scrollbar-track {
+	background-color: transparent;
+	margin-top: 0.2em;
+	margin-bottom: 0.2em;
+}
+
+::-webkit-scrollbar-track-end {
+	background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #ddd;
+	border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: #aaa;
+}
+
 /* CARD */
 .card {
 	display: flex;
@@ -191,7 +217,7 @@
 	border: 1px solid #ddd;
 	border-radius: 0.7em;
 	max-height: 9.5em;
-	overflow-y: auto;
+	overflow: overlay;
 	animation: none;
 }
 
