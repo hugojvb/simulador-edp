@@ -17,21 +17,24 @@
 				<h1 class="title">Simulador de Preço</h1>
 				<form class="energy_form">
 					<label for="power" class="power_label"> Potência (kVA) </label>
-					<select id="power" class="power_select">
-						<option value="" disabled selected>Escolha a Potência Contratada</option>
-						<option value="1.15">1.15</option>
-						<option value="1.15">1.15</option>
-						<option value="2.3">2.3</option>
-						<option value="3.45">3.45</option>
-						<option value="4.6">4.6</option>
-						<option value="5.75">5.75</option>
-						<option value="6.9">6.9</option>
-						<option value="10.35">10.35</option>
-						<option value="10.35">10.35</option>
-						<option value="13.8">13.8</option>
-						<option value="17.25">17.25</option>
-						<option value="20.7">20.7</option>
-					</select>
+					<div class="power_select_container">
+						<select id="power" class="power_select">
+							<option value="" disabled selected>Escolha a Potência Contratada</option>
+							<option value="1.15">1.15</option>
+							<option value="1.15">1.15</option>
+							<option value="2.3">2.3</option>
+							<option value="3.45">3.45</option>
+							<option value="4.6">4.6</option>
+							<option value="5.75">5.75</option>
+							<option value="6.9">6.9</option>
+							<option value="10.35">10.35</option>
+							<option value="10.35">10.35</option>
+							<option value="13.8">13.8</option>
+							<option value="17.25">17.25</option>
+							<option value="20.7">20.7</option>
+						</select>
+						<img src="arrow.svg" alt="arrow" class="arrow" />
+					</div>
 					<div class="consumption_form_group">
 						<div class="form_group">
 							<input placeholder=" " type="number" name="emptyHours" id="emptyHours" />

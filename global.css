@@ -63,10 +63,14 @@
 	margin: 1em;
 }
 
+.power_select_container {
+	position: relative;
+}
+
 .power_select {
 	-webkit-appearance: none;
 	padding: 7px 40px 7px 12px;
-	width: 40%;
+	width: 100%;
 	border: 1px solid #ddd;
 	border-radius: 0.7em;
 	box-shadow: 0 1px 3px -2px #9098a9;
@@ -76,6 +80,20 @@
 	padding: 1em;
 	font-size: 0.9em;
 	outline: none;
+}
+
+.arrow {
+	position: absolute;
+	right: 12px;
+	top: 1em;
+	width: 1em;
+	height: 1em;
+	stroke-width: 2px;
+	stroke: #9098a9;
+	fill: none;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+	pointer-events: none;
 }
 
 /* INPUTS */
