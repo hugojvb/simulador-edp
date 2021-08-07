@@ -1,0 +1,147 @@
+@import url(select.css);
+
+* {
+	margin: 0;
+	box-sizing: border-box;
+	font-family: "Roboto", sans-serif;
+}
+
+:root {
+	--primary-color: #ee162d;
+	--secondary-color: #af0e21;
+	--tertiary-color: #fcd1d6;
+}
+
+::selection {
+	background-color: var(--primary-color);
+	color: #fff;
+}
+
+/* GENERAL */
+.container {
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+/* SCROLLBAR */
+
+::-webkit-scrollbar {
+	width: 0.6rem;
+	background-color: transparent;
+}
+
+::-webkit-scrollbar-track {
+	background-color: transparent;
+	margin-top: 0.2em;
+	margin-bottom: 0.2em;
+}
+
+::-webkit-scrollbar-track-end {
+	background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #ddd;
+	border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: #aaa;
+}
+
+/* CARD */
+.card {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.title {
+	font-weight: 100;
+}
+
+.logo {
+	height: 20em;
+	user-select: none;
+}
+
+/* FORM */
+.energy_form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-around;
+	margin: 1em;
+}
+
+.consumption_form_group {
+	display: flex;
+}
+
+.form_group {
+	margin: 3em;
+	position: relative;
+}
+
+/* INPUTS */
+.form_group input {
+	padding: 1em;
+	border-radius: 0.7em;
+	border: 1px solid #ddd;
+	font-weight: 600;
+	box-shadow: 0 1px 3px -2px #9098a9;
+}
+
+.form_group label {
+	position: absolute;
+	bottom: 0.9em;
+	left: 0.6em;
+	transition: all 0.15s ease-in-out;
+	background-color: #fff;
+	padding: 0 0.3em;
+	user-select: none;
+	font-size: 0.9em;
+}
+
+.form_group label:hover {
+	cursor: text;
+}
+
+.form_group input:hover {
+	border: 1px solid var(--tertiary-color);
+}
+
+/* INPUT FOCUS EFFECT */
+.form_group input:focus {
+	outline: none;
+	border: 1px solid var(--primary-color);
+}
+
+.form_group input:not(:placeholder-shown) + label,
+.form_group input:focus + label {
+	transform: translateY(-2.4em);
+	font-size: 0.7em;
+	color: var(--primary-color);
+}
+
+/* SUBMIT BUTTON */
+.energy_form button.submit_button {
+	border-radius: 2.5em;
+	background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+	color: #fff;
+	padding: 0.75em 2.5em;
+	border: none;
+	font-size: 1.2em;
+	margin: 1em;
+	font-weight: 600;
+}
+
+.energy_form button.submit_button:hover {
+	cursor: pointer;
+	transition: all 0.15s ease-in-out;
+	transform: scale(1.05);
+	background: linear-gradient(50deg, var(--primary-color), var(--secondary-color));
+}

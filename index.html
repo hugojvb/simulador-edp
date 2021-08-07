@@ -5,7 +5,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Simulador EDP 2021</title>
-		<link rel="stylesheet" href="global.css" />
+		<link rel="stylesheet" href="styles/global.css" />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet" />
@@ -13,7 +13,7 @@
 	<body>
 		<div class="container">
 			<div class="card">
-				<img src="edp.jpg" alt="edp" class="logo" />
+				<img src="assets/edp.jpg" alt="edp" class="logo" />
 				<h1 class="title">Simulador de Preço</h1>
 				<form class="energy_form">
 					<label for="power" class="power_label"> Potência (kVA) </label>
@@ -21,59 +21,57 @@
 						<div id="select_box">
 							<input type="checkbox" id="select_view_button" />
 							<div id="select_button" class="brd">
-								<div id="selected_value">
-									<span>Escolha a Potência Contratada</span>
-								</div>
-								<img src="arrow.svg" alt="arrow" class="arrow" />
+								<div id="selected_value">Escolha a Potência Contratada</div>
+								<img src="assets/arrow.svg" alt="arrow" class="arrow" />
 							</div>
 							<div id="options">
 								<div class="option">
-									<input class="s-c top" type="radio" name="platform" value="1.15" />
+									<input class="s-c top" type="radio" name="power" value="1.15" />
 									<span class="label">1.15</span>
 									<span class="opt-val">1.15</span>
 								</div>
 								<div class="option">
-									<input class="s-c top" type="radio" name="platform" value="2.3" />
+									<input class="s-c top" type="radio" name="power" value="2.3" />
 									<span class="label">2.3</span>
 									<span class="opt-val">2.3</span>
 								</div>
 								<div class="option">
-									<input class="s-c top" type="radio" name="platform" value="3.45" />
+									<input class="s-c top" type="radio" name="power" value="3.45" checked />
 									<span class="label">3.45</span>
 									<span class="opt-val">3.45</span>
 								</div>
 								<div class="option">
-									<input class="s-c top" type="radio" name="platform" value="4.6" />
+									<input class="s-c top" type="radio" name="power" value="4.6" />
 									<span class="label">4.6</span>
 									<span class="opt-val">4.6</span>
 								</div>
 								<div class="option">
-									<input class="s-c top" type="radio" name="platform" value="5.75" />
+									<input class="s-c top" type="radio" name="power" value="5.75" />
 									<span class="label">5.75</span>
 									<span class="opt-val">5.75</span>
 								</div>
 								<div class="option">
-									<input class="s-c top" type="radio" name="platform" value="6.9" />
+									<input class="s-c top" type="radio" name="power" value="6.9" />
 									<span class="label">6.9</span>
 									<span class="opt-val">6.9</span>
 								</div>
 								<div class="option">
-									<input class="s-c top" type="radio" name="platform" value="10.35" />
+									<input class="s-c top" type="radio" name="power" value="10.35" />
 									<span class="label">10.35</span>
 									<span class="opt-val">10.35</span>
 								</div>
 								<div class="option">
-									<input class="s-c top" type="radio" name="platform" value="13.8" />
+									<input class="s-c top" type="radio" name="power" value="13.8" />
 									<span class="label">13.8</span>
 									<span class="opt-val">13.8</span>
 								</div>
 								<div class="option">
-									<input class="s-c top" type="radio" name="platform" value="17.25" />
+									<input class="s-c top" type="radio" name="power" value="17.25" />
 									<span class="label">17.25</span>
 									<span class="opt-val">17.25</span>
 								</div>
 								<div class="option">
-									<input class="s-c top" type="radio" name="platform" value="20.7" />
+									<input class="s-c top" type="radio" name="power" value="20.7" />
 									<span class="label">20.7</span>
 									<span class="opt-val">20.7</span>
 								</div>

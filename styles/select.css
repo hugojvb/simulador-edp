@@ -1,0 +1,177 @@
+/* POWER SELECT */
+
+.power_label {
+	margin: 1em;
+}
+
+.arrow {
+	position: absolute;
+	right: 12px;
+	top: 0.8em;
+	width: 1em;
+	height: 1em;
+	stroke-width: 2px;
+	stroke: #9098a9;
+	fill: none;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+	pointer-events: none;
+}
+
+.select_container {
+	position: relative;
+	width: 300px;
+	height: 42px;
+}
+
+#select_box {
+	border: 1px solid #ddd;
+	position: absolute;
+	top: 0;
+	right: 0;
+	left: 0;
+	width: 300px;
+	height: 42px;
+	margin: 0 auto 0 auto;
+	border-radius: 0.7em;
+	box-shadow: 0 1px 3px -2px #9098a9;
+}
+
+#select_button {
+	position: relative;
+	height: 16px;
+	padding: 12px 14px;
+	background-color: #fff;
+	border-radius: 0.7em;
+	cursor: pointer;
+}
+
+#select_view_button {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	opacity: 0;
+	cursor: pointer;
+	z-index: 3;
+}
+
+#selected_value {
+	font-size: 0.9em;
+	line-height: 1;
+	margin-right: 26px;
+}
+
+.options {
+	position: absolute;
+	left: 0;
+	width: 250px;
+}
+
+#options {
+	position: absolute;
+	top: 42px;
+	right: 0;
+	left: 0;
+	width: 298px;
+	margin: 0 auto;
+	background-color: #fff;
+}
+
+.option {
+	position: relative;
+	line-height: 1;
+	transition: 0.3s ease all;
+	z-index: 2;
+	background-color: #fff;
+}
+
+.label {
+	display: none;
+	padding: 0;
+	margin-left: 0.2em;
+	transition: 0.3s ease all;
+	font-weight: 600;
+	font-size: 0.8em;
+}
+
+#select_view_button:checked ~ #select_button .arrow {
+	transform: rotate(180deg);
+	transition: transform 0.2s ease-in-out;
+}
+
+#select_view_button ~ #select_button .arrow {
+	transition: transform 0.2s ease-in-out;
+}
+
+#select_view_button:checked ~ #options .label {
+	display: block;
+	padding: 12px 14px;
+}
+
+#select_view_button:checked ~ #options {
+	border: 1px solid #ddd;
+	border-radius: 0.7em;
+	max-height: 9.5em;
+	overflow: overlay;
+}
+
+input[type="radio"] {
+	position: absolute;
+	right: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	opacity: 0;
+	cursor: pointer;
+}
+
+.s-c:hover {
+	height: 100%;
+	z-index: 1;
+}
+
+.opt-val {
+	position: absolute;
+	left: 14px;
+	width: 217px;
+	height: 21px;
+	opacity: 0;
+	background-color: #fff;
+	transform: scale(0);
+}
+
+.option input[type="radio"]:checked ~ .label,
+.option input[type="radio"]:hover ~ .label {
+	color: #fff;
+	transition: color 0s ease-in-out;
+}
+
+.option input[type="radio"]:checked ~ .label:before {
+	content: "";
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: -1;
+	background-color: #000;
+	color: white;
+}
+
+.option input[type="radio"]:hover ~ .label:before {
+	content: "";
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: -1;
+	background-color: var(--primary-color);
+	color: white;
+}
