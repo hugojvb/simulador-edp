@@ -17,8 +17,8 @@ options.forEach((element) => {
 	});
 });
 
-optionsDiv.addEventListener("click", function (e) {
-	if (e.target != optionsDiv && e.target.parentNode != optionsDiv) {
+window.addEventListener("mouseup", function (e) {
+	if (e.target != optionsDiv) {
 		selectViewButton.checked = false;
 	}
 });
