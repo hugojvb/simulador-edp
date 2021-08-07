@@ -10,11 +10,6 @@
 	top: 0.8em;
 	width: 1em;
 	height: 1em;
-	stroke-width: 2px;
-	stroke: #9098a9;
-	fill: none;
-	stroke-linecap: round;
-	stroke-linejoin: round;
 	pointer-events: none;
 	user-select: none;
 }
