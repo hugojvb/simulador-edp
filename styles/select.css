@@ -16,6 +16,7 @@
 	stroke-linecap: round;
 	stroke-linejoin: round;
 	pointer-events: none;
+	user-select: none;
 }
 
 .select_container {
@@ -85,6 +86,7 @@
 	font-size: 0.9em;
 	line-height: 1;
 	margin-right: 26px;
+	user-select: none;
 }
 
 .options {
@@ -95,6 +97,7 @@
 	width: 298px;
 	margin: 0 auto;
 	background-color: #fff;
+	user-select: none;
 }
 
 .option {
