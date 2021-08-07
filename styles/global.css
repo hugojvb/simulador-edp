@@ -2,6 +2,7 @@
 @import url(scrollbar.css);
 @import url(inputs.css);
 @import url(button.css);
+@import url(results.css);
 
 * {
 	margin: 0;
