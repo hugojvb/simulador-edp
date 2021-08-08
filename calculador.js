@@ -35,12 +35,14 @@ window.addEventListener("mouseup", function (e) {
 // CALCULATE THE COST OF THE POWER ALONE
 const calculatePowerCost = () => {
 	const power = +selectedValue.innerHTML;
-	let powerPrice;
+	let powerPrice = 0;
 	if (power < 3.45) {
-		powerPrice = simples.forEach((current) => (power == current.power ? current.powerPrice : 0));
+		let powerPrice = simples.forEach((current) => (power == current.power ? current.powerPrice : 0));
 	} else if (power >= 3.45) {
-		powerPrice = trihorario.forEach((current) => (power == current.power ? current.powerPrice : 0));
+		let powerPrice = trihorario.forEach((current) => (power == current.power ? current.powerPrice : 0));
 	}
+
+	console.log(powerPrice);
 
 	return 30 * powerPrice;
 };
@@ -49,18 +51,23 @@ const calculatePowerCost = () => {
 submitButton.addEventListener("click", function (e) {
 	e.preventDefault();
 
-	let powerPrice = calculatePowerCost();
-	let emptyHoursPrice = emptyHours.value;
-	let fullHoursPrice = fullHours.value;
-	let edgeHoursPrice = edgeHours.value;
+	const powerPrice = calculatePowerCost();
+	const emptyHoursSpending = +emptyHours.value;
+	const fullHoursSpending = +fullHours.value;
+	const edgeHoursSpending = +edgeHours.value;
 
-	results.style.visibility = "visible";
+	const simpleSum = Math.round((emptyHoursSpending + fullHoursSpending + edgeHoursSpending) * simples[0].energyPrice);
+	simplePrice.innerHTML = simpleSum;
+
+	console.log(powerPrice);
+	results.style.display = "flex";
 	results.scrollIntoView({ behavior: "smooth" });
 });
 
 retryButton.addEventListener("click", function (e) {
 	e.preventDefault();
 
-	results.style.visibility = "hidden";
 	window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+
+	results.style.display = "none";
 });
