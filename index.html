@@ -80,15 +80,15 @@
 					</div>
 					<div class="consumption_form_group">
 						<div class="form_group">
-							<input placeholder=" " type="number" name="emptyHours" id="emptyHours" min="0" />
+							<input placeholder=" " type="number" name="emptyHours" id="empty_hours" min="0" />
 							<label for="emptyHours">Vazio</label>
 						</div>
 						<div class="form_group">
-							<input placeholder=" " type="number" name="fullHours" id="fullHours" min="0" />
+							<input placeholder=" " type="number" name="fullHours" id="full_hours" min="0" />
 							<label for="fullHours">Cheia</label>
 						</div>
 						<div class="form_group">
-							<input placeholder=" " type="number" name="edgeHours" id="edgeHours" min="0" />
+							<input placeholder=" " type="number" name="edgeHours" id="edge_hours" min="0" />
 							<label for="edgeHours">Ponta</label>
 						</div>
 					</div>
@@ -99,23 +99,23 @@
 				<div class="plans">
 					<div class="simples">
 						<h4>Tarifa Simples</h4>
-						<h1>Valor a Mostrar</h1>
+						<h1 class="simple_price">Valor a Mostrar</h1>
 					</div>
 					<div class="bihorario">
 						<h4>Tarifa Simples</h4>
-						<h1>Valor a Mostrar</h1>
+						<h1 class="bihourly_price">Valor a Mostrar</h1>
 					</div>
 					<div class="trihorario">
 						<h4>Tarifa Simples</h4>
-						<h1>Valor a Mostrar</h1>
+						<h1 class="trihourly_price">Valor a Mostrar</h1>
 					</div>
 				</div>
 				<div class="cheapest">
-					<h5>Tarifa mais em conta</h5>
-					<h3>Tarifa</h3>
+					<h5>Tarifa mais em conta:</h5>
+					<h3 class="final_result"></h3>
 				</div>
+				<button class="retry">Retentar</button>
 			</section>
-			<button>Retentar</button>
 		</div>
 		<script type="text/javascript" src="data/simples.js"></script>
 		<script type="text/javascript" src="data/bihorario.js"></script>
