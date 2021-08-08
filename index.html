@@ -12,7 +12,7 @@
 	</head>
 	<body>
 		<div class="container">
-			<div class="card">
+			<section class="main">
 				<img src="assets/edp.jpg" alt="edp" class="logo" />
 				<h1 class="title">Simulador de Preço</h1>
 				<form class="energy_form">
@@ -94,7 +94,9 @@
 					</div>
 					<button class="submit_button" type="submit">Calcular</button>
 				</form>
-				<div class="results">
+			</section>
+			<section class="results">
+				<div class="plans">
 					<div class="simples">
 						<h4>Tarifa Simples</h4>
 						<h1>Valor a Mostrar</h1>
@@ -108,7 +110,12 @@
 						<h1>Valor a Mostrar</h1>
 					</div>
 				</div>
-			</div>
+				<div class="cheapest">
+					<h5>Tarifa mais em conta</h5>
+					<h3>Tarifa</h3>
+				</div>
+			</section>
+			<button>Retentar</button>
 		</div>
 		<script type="text/javascript" src="data/simples.js"></script>
 		<script type="text/javascript" src="data/bihorario.js"></script>
