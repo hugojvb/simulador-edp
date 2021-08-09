@@ -29,13 +29,15 @@ window.addEventListener("mouseup", function (e) {
 	if (e.target != optionsDiv) {
 		selectViewButton.checked = false;
 	}
-	calculatePowerCost();
 });
 
 // CALCULATE THE COST OF THE POWER ALONE
 const calculatePowerCost = () => {
 	const power = +selectedValue.innerHTML;
+
 	let powerPrice = 0;
+
+	// GET FITTING POWER PRICE
 	if (power < 3.45) {
 		simples.forEach((current) => {
 			if (power == current.power) powerPrice = current.powerPrice;
@@ -49,36 +51,55 @@ const calculatePowerCost = () => {
 	return 30 * powerPrice;
 };
 
-// SUBMIT FORM
+// RESULTS CALCULATION
 submitButton.addEventListener("click", function (e) {
 	e.preventDefault();
 
+	// CALCULATE POWER PRICE
 	const powerPrice = calculatePowerCost();
+
+	// GET CONSUMPTION VALUES
 	const emptyHoursSpending = +emptyHours.value;
 	const fullHoursSpending = +fullHours.value;
 	const edgeHoursSpending = +edgeHours.value;
 
+	// CALCULATE CONSUMPTION PRICE
 	const simpleSum = (emptyHoursSpending + fullHoursSpending + edgeHoursSpending) * simples[0].energyPrice;
 	const bihourlySum = emptyHoursSpending * bihorario[0].emptyHours + (fullHoursSpending + edgeHoursSpending) * bihorario[0].nonEmptyHours;
 	const trihourlySum =
 		emptyHoursSpending * trihorario[0].emptyHours + fullHoursSpending * trihorario[0].fullHours + edgeHoursSpending * trihorario[0].edgeHours;
 
-	simplePrice.innerHTML = Math.round((powerPrice + simpleSum) * 100) / 100;
-	bihourlyPrice.innerHTML = Math.round((powerPrice + bihourlySum) * 100) / 100;
-	trihourlyPrice.innerHTML = Math.round((powerPrice + trihourlySum) * 100) / 100;
+	// PRICES DISPLAY
+	simplePrice.innerHTML = "€" + Math.round((powerPrice + simpleSum) * 100) / 100;
+	bihourlyPrice.innerHTML = "€" + Math.round((powerPrice + bihourlySum) * 100) / 100;
+	trihourlyPrice.innerHTML = "€" + Math.round((powerPrice + trihourlySum) * 100) / 100;
 
+	// CHEAPEST PRICE
 	const bestPrice = Math.min(+simplePrice.innerHTML, +bihourlyPrice.innerHTML, +trihourlyPrice.innerHTML);
 
+	// CHEAPEST PLAN DISPLAY
 	finalResult.innerHTML = bestPrice == +simplePrice.innerHTML ? "Simples" : bestPrice == +bihourlyPrice.innerHTML ? "Bi-Horário" : "Tri-Horário";
 
+	// RESULTS DISPLAY
 	results.style.display = "flex";
 	results.scrollIntoView({ behavior: "smooth" });
 });
 
+// RETRY CLICK
 retryButton.addEventListener("click", function (e) {
-	e.preventDefault();
+	// SELECT RESET
+	selectedValue.innerHTML = options[2].children[1].innerHTML;
 
-	window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+	// PRICES RESET
+	simplePrice.innerHTML = "";
+	bihourlyPrice.innerHTML = "";
+	trihourlyPrice.innerHTML = "";
 
-	setTimeout(() => (results.style.display = "none"), 200);
+	// INPUTS RESET
+	emptyHours.value = "";
+	fullHours.value = "";
+	edgeHours.value = "";
+
+	// HIDE RESULTS
+	results.style.display = "none";
 });
