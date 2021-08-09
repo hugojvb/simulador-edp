@@ -65,8 +65,21 @@ submitButton.addEventListener("click", function (e) {
 	const fullHoursSpending = +fullHours.value;
 	const edgeHoursSpending = +edgeHours.value;
 
-	// VALIDATION
-	if (!emptyHoursSpending.value || !fullHoursSpending.value || !edgeHoursSpending.value) return;
+	// EMPTY INPUTS HIGHLIGHT
+	if (!emptyHoursSpending) {
+		emptyHours.style.border = "2px solid var(--primary-color)";
+	}
+
+	if (!fullHoursSpending) {
+		fullHours.style.border = "2px solid var(--primary-color)";
+	}
+
+	if (!edgeHoursSpending) {
+		edgeHours.style.border = "2px solid var(--primary-color)";
+	}
+
+	// CANCEL IF ANY INPUT EMPTY
+	if (!emptyHoursSpending || !fullHoursSpending || !edgeHoursSpending) return;
 
 	// CALCULATE CONSUMPTION PRICE
 	const simpleSum = (emptyHoursSpending + fullHoursSpending + edgeHoursSpending) * simples[0].energyPrice;
