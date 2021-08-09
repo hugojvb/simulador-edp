@@ -96,7 +96,7 @@ submitButton.addEventListener("click", function (e) {
 	const bestPrice = Math.min(+simplePrice.innerHTML, +bihourlyPrice.innerHTML, +trihourlyPrice.innerHTML);
 
 	// CHEAPEST PLAN DISPLAY
-	finalResult.innerHTML = bestPrice == +simplePrice.innerHTML ? "Simples" : bestPrice == +bihourlyPrice.innerHTML ? "Bi-Horário" : "Tri-Horário";
+	finalResult.innerHTML = bestPrice == +simplePrice.innerHTML ? "Simples" : bestPrice == +bihourlyPrice.innerHTML ? "Bi-Horária" : "Tri-Horária";
 
 	// RESULTS DISPLAY
 	results.style.display = "flex";
