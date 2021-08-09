@@ -67,9 +67,9 @@ submitButton.addEventListener("click", function (e) {
 	bihourlyPrice.innerHTML = Math.round((powerPrice + bihourlySum) * 100) / 100;
 	trihourlyPrice.innerHTML = Math.round((powerPrice + trihourlySum) * 100) / 100;
 
-	const bestPrice = Math.min(simplePrice.value, bihourlyPrice.value, trihourlyPrice.value);
+	const bestPrice = Math.min(+simplePrice.innerHTML, +bihourlyPrice.innerHTML, +trihourlyPrice.innerHTML);
 
-	finalResult.innerHTML = bestPrice;
+	finalResult.innerHTML = bestPrice == +simplePrice.innerHTML ? "Simples" : bestPrice == +bihourlyPrice.innerHTML ? "Bi-Horário" : "Tri-Horário";
 
 	results.style.display = "flex";
 	results.scrollIntoView({ behavior: "smooth" });
