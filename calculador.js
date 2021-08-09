@@ -46,14 +46,14 @@ const calculatePowerCost = () => {
 		});
 	}
 
-	return 30 * powerPrice;
+	return Math.round(30 * powerPrice * 100) / 100;
 };
 
 // SUBMIT FORM
 submitButton.addEventListener("click", function (e) {
 	e.preventDefault();
 
-	const powerPrice = Math.round(calculatePowerCost() * 100) / 100;
+	const powerPrice = calculatePowerCost();
 	const emptyHoursSpending = +emptyHours.value;
 	const fullHoursSpending = +fullHours.value;
 	const edgeHoursSpending = +edgeHours.value;

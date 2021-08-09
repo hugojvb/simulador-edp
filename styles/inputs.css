@@ -5,6 +5,7 @@
 	border: 1px solid #ddd;
 	font-weight: 600;
 	box-shadow: 0 1px 3px -2px #9098a9;
+	background-color: transparent;
 }
 
 .form_group label {
@@ -16,6 +17,7 @@
 	padding: 0 0.3em;
 	user-select: none;
 	font-size: 0.9em;
+	z-index: -1;
 }
 
 .form_group label:hover {
@@ -32,9 +34,11 @@
 	border: 1px solid var(--primary-color);
 }
 
+.form_group:focus label,
 .form_group input:not(:placeholder-shown) + label,
 .form_group input:focus + label {
 	transform: translateY(-2.4em);
 	font-size: 0.7em;
 	color: var(--primary-color);
+	z-index: 1;
 }
