@@ -45,12 +45,3 @@
 	justify-content: center;
 	margin: 0.5em;
 }
-
-.note {
-	margin: 0.3em 0;
-}
-
-.link {
-	color: var(--primary-color);
-	text-decoration: none;
-}
