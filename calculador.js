@@ -17,24 +17,26 @@ const retryButton = document.querySelector(".retry");
 // POWER SELECT DEFAULT VALUE TO 3.45
 selectedValue.innerHTML = options[2].children[1].innerHTML;
 
-// CLICK LISTENERS TO CHANGE SELECT
+// CHANGE SELECT CLICK LISTENERS
 options.forEach((element) => {
 	element.addEventListener("click", function (e) {
 		selectedValue.innerHTML = element.children[1].innerHTML;
 	});
 });
 
-// MOUSE UP LISTENER TO CLOSE POWER SELECT
+// CLOSE POWER SELECT MOUSE UP LISTENER
 window.addEventListener("mouseup", function (e) {
 	if (e.target != optionsDiv) {
 		selectViewButton.checked = false;
 	}
 });
 
-// CALCULATE THE COST OF THE POWER ALONE
+// COST OF THE POWER CALCULATION
 const calculatePowerCost = () => {
+	// GET SELECTED POWER
 	const power = +selectedValue.innerHTML;
 
+	// INITIATE POWER PRICE
 	let powerPrice = 0;
 
 	// GET FITTING POWER PRICE
@@ -62,6 +64,9 @@ submitButton.addEventListener("click", function (e) {
 	const emptyHoursSpending = +emptyHours.value;
 	const fullHoursSpending = +fullHours.value;
 	const edgeHoursSpending = +edgeHours.value;
+
+	// VALIDATION
+	if (!emptyHoursSpending.value || !fullHoursSpending.value || !edgeHoursSpending.value) return;
 
 	// CALCULATE CONSUMPTION PRICE
 	const simpleSum = (emptyHoursSpending + fullHoursSpending + edgeHoursSpending) * simples[0].energyPrice;
