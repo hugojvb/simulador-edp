@@ -46,7 +46,7 @@ const calculatePowerCost = () => {
 		});
 	}
 
-	return Math.round(30 * powerPrice * 100) / 100;
+	return 30 * powerPrice;
 };
 
 // SUBMIT FORM
@@ -58,20 +58,14 @@ submitButton.addEventListener("click", function (e) {
 	const fullHoursSpending = +fullHours.value;
 	const edgeHoursSpending = +edgeHours.value;
 
-	const simpleConsumptionSum = Math.round((emptyHoursSpending + fullHoursSpending + edgeHoursSpending) * simples[0].energyPrice * 100) / 100;
-	const bihourlyConsumptionSum =
-		Math.round(emptyHoursSpending * bihorario[0].emptyHours + (fullHoursSpending + edgeHoursSpending) * bihorario[0].nonEmptyHours * 100) / 100;
-	const trihourlyConsumptionSum =
-		Math.round(
-			(emptyHoursSpending * trihorario[0].emptyHours +
-				fullHoursSpending * trihorario[0].fullHours +
-				edgeHoursSpending * trihorario[0].edgeHours) *
-				100
-		) / 100;
+	const simpleSum = (emptyHoursSpending + fullHoursSpending + edgeHoursSpending) * simples[0].energyPrice;
+	const bihourlySum = emptyHoursSpending * bihorario[0].emptyHours + (fullHoursSpending + edgeHoursSpending) * bihorario[0].nonEmptyHours;
+	const trihourlySum =
+		emptyHoursSpending * trihorario[0].emptyHours + fullHoursSpending * trihorario[0].fullHours + edgeHoursSpending * trihorario[0].edgeHours;
 
-	simplePrice.innerHTML = powerPrice + simpleConsumptionSum;
-	bihourlyPrice.innerHTML = powerPrice + bihourlyConsumptionSum;
-	trihourlyPrice.innerHTML = powerPrice + trihourlyConsumptionSum;
+	simplePrice.innerHTML = Math.round((powerPrice + simpleSum) * 100) / 100;
+	bihourlyPrice.innerHTML = Math.round((powerPrice + bihourlySum) * 100) / 100;
+	trihourlyPrice.innerHTML = Math.round((powerPrice + trihourlySum) * 100) / 100;
 
 	results.style.display = "flex";
 	results.scrollIntoView({ behavior: "smooth" });
