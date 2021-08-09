@@ -67,6 +67,10 @@ submitButton.addEventListener("click", function (e) {
 	bihourlyPrice.innerHTML = Math.round((powerPrice + bihourlySum) * 100) / 100;
 	trihourlyPrice.innerHTML = Math.round((powerPrice + trihourlySum) * 100) / 100;
 
+	const bestPrice = Math.min(simplePrice.value, bihourlyPrice.value, trihourlyPrice.value);
+
+	finalResult.innerHTML = bestPrice;
+
 	results.style.display = "flex";
 	results.scrollIntoView({ behavior: "smooth" });
 });

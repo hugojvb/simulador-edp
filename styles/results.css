@@ -12,3 +12,35 @@
 	justify-content: space-around;
 	width: 50%;
 }
+
+.plans div {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-around;
+}
+
+.plans > div > .plan {
+	margin: 0.3em;
+	font-size: 1.5em;
+	font-weight: 100;
+}
+
+.plans > div > .price {
+	margin: 0.3em;
+	font-size: 2.5em;
+	color: var(--primary-color);
+}
+
+.best_plan {
+	font-weight: 100;
+}
+
+.final_result {
+	font-size: 4em;
+	color: var(--primary-color);
+	display: flex;
+	justify-content: center;
+	margin: 0.5em;
+	font-weight: 100;
+}
