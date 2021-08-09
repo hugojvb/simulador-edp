@@ -60,7 +60,7 @@ submitButton.addEventListener("click", function (e) {
 
 	const simpleConsumptionSum = Math.round((emptyHoursSpending + fullHoursSpending + edgeHoursSpending) * simples[0].energyPrice * 100) / 100;
 	const bihourlyConsumptionSum =
-		Math.round((emptyHoursSpending * bihorario[0].emptyHours + (fullHoursSpending + edgeHoursSpending) * bihorario[0].nonEmptyHours) * 100) / 100;
+		Math.round(emptyHoursSpending * bihorario[0].emptyHours + (fullHoursSpending + edgeHoursSpending) * bihorario[0].nonEmptyHours * 100) / 100;
 	const trihourlyConsumptionSum =
 		Math.round(
 			(emptyHoursSpending * trihorario[0].emptyHours +
