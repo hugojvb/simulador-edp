@@ -67,15 +67,15 @@ submitButton.addEventListener("click", function (e) {
 
 	// EMPTY INPUTS HIGHLIGHT
 	if (!emptyHoursSpending) {
-		emptyHours.style.border = "2px solid var(--primary-color)";
+		emptyHours.style.border = "1px solid var(--primary-color)";
 	}
 
 	if (!fullHoursSpending) {
-		fullHours.style.border = "2px solid var(--primary-color)";
+		fullHours.style.border = "1px solid var(--primary-color)";
 	}
 
 	if (!edgeHoursSpending) {
-		edgeHours.style.border = "2px solid var(--primary-color)";
+		edgeHours.style.border = "1px solid var(--primary-color)";
 	}
 
 	// CANCEL IF ANY INPUT EMPTY
@@ -101,6 +101,11 @@ submitButton.addEventListener("click", function (e) {
 	// RESULTS DISPLAY
 	results.style.display = "flex";
 	results.scrollIntoView({ behavior: "smooth" });
+
+	// RESET INPUTS
+	emptyHours.style.border = "1px solid #ddd";
+	fullHours.style.border = "1px solid #ddd";
+	edgeHours.style.border = "1px solid #ddd";
 });
 
 // RETRY CLICK
