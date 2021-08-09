@@ -30,6 +30,7 @@
 	margin: 0.3em;
 	font-size: 2.5em;
 	color: var(--primary-color);
+	font-weight: 100;
 }
 
 .best_plan {
@@ -44,4 +45,5 @@
 	display: flex;
 	justify-content: center;
 	margin: 0.5em;
+	font-weight: 100;
 }
