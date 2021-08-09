@@ -37,12 +37,14 @@ const calculatePowerCost = () => {
 	const power = +selectedValue.innerHTML;
 	let powerPrice = 0;
 	if (power < 3.45) {
-		let powerPrice = simples.forEach((current) => (power == current.power ? current.powerPrice : 0));
+		simples.forEach((current) => {
+			if (power == current.power) powerPrice = current.powerPrice;
+		});
 	} else if (power >= 3.45) {
-		let powerPrice = trihorario.forEach((current) => (power == current.power ? current.powerPrice : 0));
+		trihorario.forEach((current) => {
+			if (power == current.power) powerPrice = current.powerPrice;
+		});
 	}
-
-	console.log(powerPrice);
 
 	return 30 * powerPrice;
 };
@@ -51,15 +53,26 @@ const calculatePowerCost = () => {
 submitButton.addEventListener("click", function (e) {
 	e.preventDefault();
 
-	const powerPrice = calculatePowerCost();
+	const powerPrice = Math.round(calculatePowerCost() * 100) / 100;
 	const emptyHoursSpending = +emptyHours.value;
 	const fullHoursSpending = +fullHours.value;
 	const edgeHoursSpending = +edgeHours.value;
 
-	const simpleSum = Math.round((emptyHoursSpending + fullHoursSpending + edgeHoursSpending) * simples[0].energyPrice);
-	simplePrice.innerHTML = simpleSum;
+	const simpleConsumptionSum = Math.round((emptyHoursSpending + fullHoursSpending + edgeHoursSpending) * simples[0].energyPrice * 100) / 100;
+	const bihourlyConsumptionSum =
+		Math.round((emptyHoursSpending * bihorario[0].emptyHours + (fullHoursSpending + edgeHoursSpending) * bihorario[0].nonEmptyHours) * 100) / 100;
+	const trihourlyConsumptionSum =
+		Math.round(
+			(emptyHoursSpending * trihorario[0].emptyHours +
+				fullHoursSpending * trihorario[0].fullHours +
+				edgeHoursSpending * trihorario[0].edgeHours) *
+				100
+		) / 100;
 
-	console.log(powerPrice);
+	simplePrice.innerHTML = powerPrice + simpleConsumptionSum;
+	bihourlyPrice.innerHTML = powerPrice + bihourlyConsumptionSum;
+	trihourlyPrice.innerHTML = powerPrice + trihourlyConsumptionSum;
+
 	results.style.display = "flex";
 	results.scrollIntoView({ behavior: "smooth" });
 });
@@ -69,5 +82,5 @@ retryButton.addEventListener("click", function (e) {
 
 	window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
 
-	results.style.display = "none";
+	setTimeout(() => (results.style.display = "none"), 200);
 });
