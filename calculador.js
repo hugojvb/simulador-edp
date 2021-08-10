@@ -139,5 +139,5 @@ retryButton.addEventListener("click", function (e) {
 		edgeHours.value = "";
 
 		results.style.display = "none";
-	}, 400);
+	}, 750);
 });
