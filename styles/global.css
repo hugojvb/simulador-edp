@@ -1,8 +1,4 @@
-@import url(select.css);
-@import url(scrollbar.css);
-@import url(inputs.css);
-@import url(button.css);
-@import url(results.css);
+/* GLOBAL */
 
 * {
 	margin: 0;
@@ -84,16 +80,4 @@ footer {
 .link {
 	color: var(--primary-color);
 	text-decoration: none;
-}
-
-/* RESPONSIVENESS */
-
-@media only screen and (max-width: 876px) {
-	.consumption_form_group {
-		flex-direction: column;
-	}
-
-	.form_group {
-		margin: 1.5em;
-	}
 }
