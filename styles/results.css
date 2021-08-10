@@ -12,7 +12,7 @@
 .plans {
 	display: flex;
 	justify-content: space-between;
-	width: 50%;
+	width: 75%;
 }
 
 .plans div {
@@ -48,4 +48,5 @@
 	justify-content: center;
 	margin: 0.5em;
 	font-weight: 100;
+	text-align: center;
 }
