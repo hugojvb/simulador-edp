@@ -6,6 +6,10 @@
 	font-family: "Roboto", sans-serif;
 }
 
+:focus {
+	outline: none;
+}
+
 :root {
 	--primary-color: #ee162d;
 	--secondary-color: #af0e21;
