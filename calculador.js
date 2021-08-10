@@ -53,6 +53,24 @@ const calculatePowerCost = () => {
 	return 30 * powerPrice;
 };
 
+const validateInputs = () => {
+	// EMPTY INPUTS HIGHLIGHT
+	if (!emptyHours.value) {
+		emptyHours.style.border = "1px solid var(--primary-color)";
+	}
+
+	if (!fullHours.value) {
+		fullHours.style.border = "1px solid var(--primary-color)";
+	}
+
+	if (!edgeHours.value) {
+		edgeHours.style.border = "1px solid var(--primary-color)";
+	}
+
+	// CANCEL IF ANY INPUT EMPTY
+	if (!emptyHours.value || !fullHours.value || !edgeHours.value) return;
+};
+
 // RESULTS CALCULATION
 submitButton.addEventListener("click", function (e) {
 	e.preventDefault();
@@ -60,32 +78,14 @@ submitButton.addEventListener("click", function (e) {
 	// CALCULATE POWER PRICE
 	const powerPrice = calculatePowerCost();
 
-	// GET CONSUMPTION VALUES
-	const emptyHoursSpending = +emptyHours.value;
-	const fullHoursSpending = +fullHours.value;
-	const edgeHoursSpending = +edgeHours.value;
-
-	// EMPTY INPUTS HIGHLIGHT
-	if (!emptyHoursSpending) {
-		emptyHours.style.border = "1px solid var(--primary-color)";
-	}
-
-	if (!fullHoursSpending) {
-		fullHours.style.border = "1px solid var(--primary-color)";
-	}
-
-	if (!edgeHoursSpending) {
-		edgeHours.style.border = "1px solid var(--primary-color)";
-	}
-
-	// CANCEL IF ANY INPUT EMPTY
-	if (!emptyHoursSpending || !fullHoursSpending || !edgeHoursSpending) return;
+	// VALIDATE INPUTS
+	validateInputs();
 
 	// CALCULATE CONSUMPTION PRICE
-	const simpleSum = (emptyHoursSpending + fullHoursSpending + edgeHoursSpending) * simples[0].energyPrice;
-	const bihourlySum = emptyHoursSpending * bihorario[0].emptyHours + (fullHoursSpending + edgeHoursSpending) * bihorario[0].nonEmptyHours;
+	const simpleSum = (+emptyHours.value + +fullHours.value + +edgeHours.value) * simples[0].energyPrice;
+	const bihourlySum = +emptyHours.value * bihorario[0].emptyHours + (+fullHours.value + +edgeHours.value) * bihorario[0].nonEmptyHours;
 	const trihourlySum =
-		emptyHoursSpending * trihorario[0].emptyHours + fullHoursSpending * trihorario[0].fullHours + edgeHoursSpending * trihorario[0].edgeHours;
+		+emptyHours.value * trihorario[0].emptyHours + +fullHours.value * trihorario[0].fullHours + +edgeHours.value * trihorario[0].edgeHours;
 
 	// PRICES DISPLAY
 	simplePrice.innerHTML = "€" + Math.round((powerPrice + simpleSum) * 100) / 100;
