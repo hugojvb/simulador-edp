@@ -134,24 +134,24 @@ submitButton.addEventListener("click", function (e) {
 
 // RETRY CLICK
 retryButton.addEventListener("click", function (e) {
+	// INPUTS RESET
+	emptyHours.value = "";
+	fullHours.value = "";
+	edgeHours.value = "";
+
+	// SELECT RESET
+	selectedValue.innerHTML = options[2].children[1].innerHTML;
+	options[2].children[0].checked = true;
+
 	// SCROLL TO TOP
 	window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
 
 	// HIDE RESULTS
 	setTimeout(() => {
-		// SELECT RESET
-		selectedValue.innerHTML = options[2].children[1].innerHTML;
-		options[2].children[0].checked = true;
-
 		// PRICES RESET
 		simplePrice.innerHTML = "";
 		bihourlyPrice.innerHTML = "";
 		trihourlyPrice.innerHTML = "";
-
-		// INPUTS RESET
-		emptyHours.value = "";
-		fullHours.value = "";
-		edgeHours.value = "";
 
 		results.style.display = "none";
 	}, 750);
