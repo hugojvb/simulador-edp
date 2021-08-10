@@ -107,10 +107,11 @@ submitButton.addEventListener("click", function (e) {
 	trihourlyPrice.innerHTML = "€" + Math.round((powerPrice + trihourlySum) * 100) / 100;
 
 	// CHEAPEST PRICE
-	const bestPrice = Math.min(+simplePrice.innerHTML, +bihourlyPrice.innerHTML, +trihourlyPrice.innerHTML);
+	const bestPrice = Math.min(+simplePrice.innerHTML.substr(1), +bihourlyPrice.innerHTML.substr(1), +trihourlyPrice.innerHTML.substr(1));
 
 	// CHEAPEST PLAN DISPLAY
-	finalResult.innerHTML = bestPrice == +simplePrice.innerHTML ? "Simples" : bestPrice == +bihourlyPrice.innerHTML ? "Bi-Horária" : "Tri-Horária";
+	finalResult.innerHTML =
+		bestPrice == +simplePrice.innerHTML.substr(1) ? "Simples" : bestPrice == +bihourlyPrice.innerHTML.substr(1) ? "Bi-Horária" : "Tri-Horária";
 
 	// RESULTS DISPLAY
 	results.style.display = "flex";
