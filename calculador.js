@@ -73,7 +73,15 @@ const validateInputs = () => {
 	return true;
 };
 
-const calculatePrices = () => {};
+const calculatePrices = () => {
+	// CALCULATE CONSUMPTION PRICE
+	const simpleSum = (+emptyHours.value + +fullHours.value + +edgeHours.value) * simples[0].energyPrice;
+	const bihourlySum = +emptyHours.value * bihorario[0].emptyHours + (+fullHours.value + +edgeHours.value) * bihorario[0].nonEmptyHours;
+	const trihourlySum =
+		+emptyHours.value * trihorario[0].emptyHours + +fullHours.value * trihorario[0].fullHours + +edgeHours.value * trihorario[0].edgeHours;
+
+	return { simpleSum, bihourlySum, trihourlySum };
+};
 
 // CALCULATE CLICK
 submitButton.addEventListener("click", function (e) {
@@ -91,7 +99,7 @@ submitButton.addEventListener("click", function (e) {
 	if (!validateInputs()) return;
 
 	// CALCULATE PRICES
-	calculatePrices();
+	const { simpleSum, bihourlySum, trihourlySum } = calculatePrices();
 
 	// PRICES DISPLAY
 	simplePrice.innerHTML = "€" + Math.round((powerPrice + simpleSum) * 100) / 100;
