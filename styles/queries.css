@@ -1,11 +1,23 @@
 /* RESPONSIVENESS */
 
-@media only screen and (max-width: 876px) {
+@media only screen and (max-width: 850px) {
 	.consumption_form_group {
 		flex-direction: column;
 	}
 
 	.form_group {
 		margin: 1.5em;
+	}
+}
+
+@media only screen and (max-width: 700px) {
+	.notes {
+		max-width: 75%;
+	}
+}
+
+@media only screen and (max-width: 400px) {
+	.logo {
+		height: 15em;
 	}
 }
