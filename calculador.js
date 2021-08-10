@@ -54,6 +54,11 @@ const calculatePowerCost = () => {
 };
 
 const validateInputs = () => {
+	// RESET INPUTS
+	emptyHours.style.border = "1px solid #ddd";
+	fullHours.style.border = "1px solid #ddd";
+	edgeHours.style.border = "1px solid #ddd";
+
 	// EMPTY INPUTS HIGHLIGHT
 	if (emptyHours.value.length === 0) {
 		emptyHours.style.border = "1px solid var(--primary-color)";
@@ -87,13 +92,10 @@ const calculatePrices = () => {
 submitButton.addEventListener("click", function (e) {
 	e.preventDefault();
 
+	e.target.focus();
+
 	// CALCULATE POWER PRICE
 	const powerPrice = calculatePowerCost();
-
-	// RESET INPUTS
-	emptyHours.style.border = "1px solid #ddd";
-	fullHours.style.border = "1px solid #ddd";
-	edgeHours.style.border = "1px solid #ddd";
 
 	// VALIDATE INPUTS
 	if (!validateInputs()) return;
