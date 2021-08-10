@@ -14,7 +14,7 @@ const trihourlyPrice = document.querySelector(".trihourly_price");
 const finalResult = document.querySelector(".final_result");
 const retryButton = document.querySelector(".retry");
 
-// POWER SELECT DEFAULT VALUE TO 3.45
+// SELECT DEFAULT VALUE TO 3.45
 selectedValue.innerHTML = options[2].children[1].innerHTML;
 
 // CHANGE SELECT CLICK LISTENERS
@@ -24,7 +24,7 @@ options.forEach((element) => {
 	});
 });
 
-// CLOSE POWER SELECT MOUSE UP LISTENER
+// CLOSE SELECT MOUSE UP LISTENER
 window.addEventListener("mouseup", function (e) {
 	if (e.target != optionsDiv) {
 		selectViewButton.checked = false;
@@ -39,7 +39,7 @@ const calculatePowerCost = () => {
 	// INITIATE POWER PRICE
 	let powerPrice = 0;
 
-	// GET FITTING POWER PRICE
+	// GET MATCHING POWER PRICE
 	if (power < 3.45) {
 		simples.forEach((current) => {
 			if (power == current.power) powerPrice = current.powerPrice;
@@ -112,6 +112,7 @@ submitButton.addEventListener("click", function (e) {
 retryButton.addEventListener("click", function (e) {
 	// SELECT RESET
 	selectedValue.innerHTML = options[2].children[1].innerHTML;
+	options[2].children[0].checked = true;
 
 	// PRICES RESET
 	simplePrice.innerHTML = "";
@@ -123,6 +124,9 @@ retryButton.addEventListener("click", function (e) {
 	fullHours.value = "";
 	edgeHours.value = "";
 
+	// SCROLL TO TOP
+	window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+
 	// HIDE RESULTS
-	results.style.display = "none";
+	setTimeout(() => (results.style.display = "none"), 300);
 });
