@@ -29,7 +29,7 @@
 }
 
 .plans > div > .price {
-	margin: 0.3em;
+	margin-bottom: 0.3em;
 	font-size: 2.5em;
 	color: var(--primary-color);
 	font-weight: 100;
