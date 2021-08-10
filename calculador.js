@@ -53,6 +53,7 @@ const calculatePowerCost = () => {
 	return 30 * powerPrice;
 };
 
+// VALIDATE INPUTS
 const validateInputs = () => {
 	// RESET INPUTS
 	emptyHours.style.border = "1px solid #ddd";
@@ -72,18 +73,28 @@ const validateInputs = () => {
 		edgeHours.style.border = "1px solid var(--primary-color)";
 	}
 
-	// CANCEL IF ANY INPUT EMPTY
+	// CANCEL IF ANY INPUT IS EMPTY
 	if (emptyHours.value.length === 0 || fullHours.value.length === 0 || edgeHours.value.length === 0) return false;
 
 	return true;
 };
 
+// CALCULATE CONSUMPTION PRICE
 const calculatePrices = () => {
-	// CALCULATE CONSUMPTION PRICE
-	const simpleSum = (+emptyHours.value + +fullHours.value + +edgeHours.value) * simples[0].energyPrice;
-	const bihourlySum = +emptyHours.value * bihorario[0].emptyHours + (+fullHours.value + +edgeHours.value) * bihorario[0].nonEmptyHours;
-	const trihourlySum =
-		+emptyHours.value * trihorario[0].emptyHours + +fullHours.value * trihorario[0].fullHours + +edgeHours.value * trihorario[0].edgeHours;
+	// GET SELECTED POWER
+	const power = +selectedValue.innerHTML;
+
+	// CALCULATE
+	let simpleSum = (+emptyHours.value + +fullHours.value + +edgeHours.value) * simples[0].energyPrice;
+	let bihourlySum = +emptyHours.value * bihorario[0].emptyHours + (+fullHours.value + +edgeHours.value) * bihorario[0].nonEmptyHours;
+	let trihourlySum;
+	if (power > 20.7) {
+		trihourlySum =
+			+emptyHours.value * trihorario[8].emptyHours + +fullHours.value * trihorario[8].fullHours + +edgeHours.value * trihorario[8].edgeHours;
+	} else if (power <= 20.7) {
+		trihourlySum =
+			+emptyHours.value * trihorario[0].emptyHours + +fullHours.value * trihorario[0].fullHours + +edgeHours.value * trihorario[0].edgeHours;
+	}
 
 	return { simpleSum, bihourlySum, trihourlySum };
 };
@@ -92,6 +103,7 @@ const calculatePrices = () => {
 submitButton.addEventListener("click", function (e) {
 	e.preventDefault();
 
+	// FOCUS BUTTON
 	e.target.focus();
 
 	// CALCULATE POWER PRICE
