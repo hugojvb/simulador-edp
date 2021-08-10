@@ -55,37 +55,43 @@ const calculatePowerCost = () => {
 
 const validateInputs = () => {
 	// EMPTY INPUTS HIGHLIGHT
-	if (!emptyHours.value) {
+	if (emptyHours.value.length === 0) {
 		emptyHours.style.border = "1px solid var(--primary-color)";
 	}
 
-	if (!fullHours.value) {
+	if (fullHours.value.length === 0) {
 		fullHours.style.border = "1px solid var(--primary-color)";
 	}
 
-	if (!edgeHours.value) {
+	if (edgeHours.value.length === 0) {
 		edgeHours.style.border = "1px solid var(--primary-color)";
 	}
 
 	// CANCEL IF ANY INPUT EMPTY
-	if (!emptyHours.value || !fullHours.value || !edgeHours.value) return;
+	if (emptyHours.value.length === 0 || fullHours.value.length === 0 || edgeHours.value.length === 0) return false;
+
+	return true;
 };
 
-// RESULTS CALCULATION
+const calculatePrices = () => {};
+
+// CALCULATE CLICK
 submitButton.addEventListener("click", function (e) {
 	e.preventDefault();
 
 	// CALCULATE POWER PRICE
 	const powerPrice = calculatePowerCost();
 
-	// VALIDATE INPUTS
-	validateInputs();
+	// RESET INPUTS
+	emptyHours.style.border = "1px solid #ddd";
+	fullHours.style.border = "1px solid #ddd";
+	edgeHours.style.border = "1px solid #ddd";
 
-	// CALCULATE CONSUMPTION PRICE
-	const simpleSum = (+emptyHours.value + +fullHours.value + +edgeHours.value) * simples[0].energyPrice;
-	const bihourlySum = +emptyHours.value * bihorario[0].emptyHours + (+fullHours.value + +edgeHours.value) * bihorario[0].nonEmptyHours;
-	const trihourlySum =
-		+emptyHours.value * trihorario[0].emptyHours + +fullHours.value * trihorario[0].fullHours + +edgeHours.value * trihorario[0].edgeHours;
+	// VALIDATE INPUTS
+	if (!validateInputs()) return;
+
+	// CALCULATE PRICES
+	calculatePrices();
 
 	// PRICES DISPLAY
 	simplePrice.innerHTML = "€" + Math.round((powerPrice + simpleSum) * 100) / 100;
@@ -101,32 +107,29 @@ submitButton.addEventListener("click", function (e) {
 	// RESULTS DISPLAY
 	results.style.display = "flex";
 	results.scrollIntoView({ behavior: "smooth" });
-
-	// RESET INPUTS
-	emptyHours.style.border = "1px solid #ddd";
-	fullHours.style.border = "1px solid #ddd";
-	edgeHours.style.border = "1px solid #ddd";
 });
 
 // RETRY CLICK
 retryButton.addEventListener("click", function (e) {
-	// SELECT RESET
-	selectedValue.innerHTML = options[2].children[1].innerHTML;
-	options[2].children[0].checked = true;
-
-	// PRICES RESET
-	simplePrice.innerHTML = "";
-	bihourlyPrice.innerHTML = "";
-	trihourlyPrice.innerHTML = "";
-
-	// INPUTS RESET
-	emptyHours.value = "";
-	fullHours.value = "";
-	edgeHours.value = "";
-
 	// SCROLL TO TOP
 	window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
 
 	// HIDE RESULTS
-	setTimeout(() => (results.style.display = "none"), 300);
+	setTimeout(() => {
+		// SELECT RESET
+		selectedValue.innerHTML = options[2].children[1].innerHTML;
+		options[2].children[0].checked = true;
+
+		// PRICES RESET
+		simplePrice.innerHTML = "";
+		bihourlyPrice.innerHTML = "";
+		trihourlyPrice.innerHTML = "";
+
+		// INPUTS RESET
+		emptyHours.value = "";
+		fullHours.value = "";
+		edgeHours.value = "";
+
+		results.style.display = "none";
+	}, 400);
 });
