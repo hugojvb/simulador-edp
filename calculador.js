@@ -85,13 +85,22 @@ const calculatePrices = () => {
 	const power = +selectedValue.innerHTML;
 
 	// CALCULATE
-	let simpleSum = (+emptyHours.value + +fullHours.value + +edgeHours.value) * simples[0].energyPrice;
-	let bihourlySum = +emptyHours.value * bihorario[0].emptyHours + (+fullHours.value + +edgeHours.value) * bihorario[0].nonEmptyHours;
+	let simpleSum;
+	let bihourlySum;
 	let trihourlySum;
-	if (power > 20.7) {
+
+	if (power >= 3.45 && power <= 20.7) {
+		(+emptyHours.value + +fullHours.value + +edgeHours.value) * simples[0].energyPrice;
+	}
+
+	if (power >= 3.45 && power <= 20.7) {
+		bihourlySum = +emptyHours.value * bihorario[0].emptyHours + (+fullHours.value + +edgeHours.value) * bihorario[0].nonEmptyHours;
+	}
+
+	if ((power >= 27, 6)) {
 		trihourlySum =
 			+emptyHours.value * trihorario[8].emptyHours + +fullHours.value * trihorario[8].fullHours + +edgeHours.value * trihorario[8].edgeHours;
-	} else if (power <= 20.7) {
+	} else if (power >= 3.45) {
 		trihourlySum =
 			+emptyHours.value * trihorario[0].emptyHours + +fullHours.value * trihorario[0].fullHours + +edgeHours.value * trihorario[0].edgeHours;
 	}
