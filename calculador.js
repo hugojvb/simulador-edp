@@ -84,20 +84,21 @@ const calculatePrices = () => {
 	// GET SELECTED POWER
 	const power = +selectedValue.innerHTML;
 
-	// CALCULATE
+	// DECLARE SUMS
 	let simpleSum;
 	let bihourlySum;
 	let trihourlySum;
 
-	if (power >= 3.45 && power <= 20.7) {
-		(+emptyHours.value + +fullHours.value + +edgeHours.value) * simples[0].energyPrice;
+	// CALCULATE SUMS
+	if (power <= 20.7) {
+		simpleSum = (+emptyHours.value + +fullHours.value + +edgeHours.value) * simples[0].energyPrice;
 	}
 
 	if (power >= 3.45 && power <= 20.7) {
 		bihourlySum = +emptyHours.value * bihorario[0].emptyHours + (+fullHours.value + +edgeHours.value) * bihorario[0].nonEmptyHours;
 	}
 
-	if ((power >= 27, 6)) {
+	if (power >= 27.6) {
 		trihourlySum =
 			+emptyHours.value * trihorario[8].emptyHours + +fullHours.value * trihorario[8].fullHours + +edgeHours.value * trihorario[8].edgeHours;
 	} else if (power >= 3.45) {
@@ -125,9 +126,9 @@ submitButton.addEventListener("click", function (e) {
 	const { simpleSum, bihourlySum, trihourlySum } = calculatePrices();
 
 	// PRICES DISPLAY
-	simplePrice.innerHTML = "€" + Math.round((powerPrice + simpleSum) * 100) / 100;
-	bihourlyPrice.innerHTML = "€" + Math.round((powerPrice + bihourlySum) * 100) / 100;
-	trihourlyPrice.innerHTML = "€" + Math.round((powerPrice + trihourlySum) * 100) / 100;
+	simplePrice.innerHTML = simpleSum ? "€" + Math.round((powerPrice + simpleSum) * 100) / 100 : "N/A";
+	bihourlyPrice.innerHTML = bihourlySum ? "€" + Math.round((powerPrice + bihourlySum) * 100) / 100 : "N/A";
+	trihourlyPrice.innerHTML = trihourlySum ? "€" + Math.round((powerPrice + trihourlySum) * 100) / 100 : "N/A";
 
 	// CHEAPEST PRICE
 	const bestPrice = Math.min(+simplePrice.innerHTML.substr(1), +bihourlyPrice.innerHTML.substr(1), +trihourlyPrice.innerHTML.substr(1));
