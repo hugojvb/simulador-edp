@@ -53,7 +53,13 @@ const calculatePowerCost = () => {
 	return 30 * powerPrice;
 };
 
+// VALIDATE INPUTS
 const validateInputs = () => {
+	// RESET INPUTS
+	emptyHours.style.border = "1px solid #ddd";
+	fullHours.style.border = "1px solid #ddd";
+	edgeHours.style.border = "1px solid #ddd";
+
 	// EMPTY INPUTS HIGHLIGHT
 	if (emptyHours.value.length === 0) {
 		emptyHours.style.border = "1px solid var(--primary-color)";
@@ -67,18 +73,28 @@ const validateInputs = () => {
 		edgeHours.style.border = "1px solid var(--primary-color)";
 	}
 
-	// CANCEL IF ANY INPUT EMPTY
+	// CANCEL IF ANY INPUT IS EMPTY
 	if (emptyHours.value.length === 0 || fullHours.value.length === 0 || edgeHours.value.length === 0) return false;
 
 	return true;
 };
 
+// CALCULATE CONSUMPTION PRICE
 const calculatePrices = () => {
-	// CALCULATE CONSUMPTION PRICE
-	const simpleSum = (+emptyHours.value + +fullHours.value + +edgeHours.value) * simples[0].energyPrice;
-	const bihourlySum = +emptyHours.value * bihorario[0].emptyHours + (+fullHours.value + +edgeHours.value) * bihorario[0].nonEmptyHours;
-	const trihourlySum =
-		+emptyHours.value * trihorario[0].emptyHours + +fullHours.value * trihorario[0].fullHours + +edgeHours.value * trihorario[0].edgeHours;
+	// GET SELECTED POWER
+	const power = +selectedValue.innerHTML;
+
+	// CALCULATE
+	let simpleSum = (+emptyHours.value + +fullHours.value + +edgeHours.value) * simples[0].energyPrice;
+	let bihourlySum = +emptyHours.value * bihorario[0].emptyHours + (+fullHours.value + +edgeHours.value) * bihorario[0].nonEmptyHours;
+	let trihourlySum;
+	if (power > 20.7) {
+		trihourlySum =
+			+emptyHours.value * trihorario[8].emptyHours + +fullHours.value * trihorario[8].fullHours + +edgeHours.value * trihorario[8].edgeHours;
+	} else if (power <= 20.7) {
+		trihourlySum =
+			+emptyHours.value * trihorario[0].emptyHours + +fullHours.value * trihorario[0].fullHours + +edgeHours.value * trihorario[0].edgeHours;
+	}
 
 	return { simpleSum, bihourlySum, trihourlySum };
 };
@@ -87,13 +103,11 @@ const calculatePrices = () => {
 submitButton.addEventListener("click", function (e) {
 	e.preventDefault();
 
+	// FOCUS BUTTON
+	e.target.focus();
+
 	// CALCULATE POWER PRICE
 	const powerPrice = calculatePowerCost();
-
-	// RESET INPUTS
-	emptyHours.style.border = "1px solid #ddd";
-	fullHours.style.border = "1px solid #ddd";
-	edgeHours.style.border = "1px solid #ddd";
 
 	// VALIDATE INPUTS
 	if (!validateInputs()) return;
@@ -107,10 +121,11 @@ submitButton.addEventListener("click", function (e) {
 	trihourlyPrice.innerHTML = "€" + Math.round((powerPrice + trihourlySum) * 100) / 100;
 
 	// CHEAPEST PRICE
-	const bestPrice = Math.min(+simplePrice.innerHTML, +bihourlyPrice.innerHTML, +trihourlyPrice.innerHTML);
+	const bestPrice = Math.min(+simplePrice.innerHTML.substr(1), +bihourlyPrice.innerHTML.substr(1), +trihourlyPrice.innerHTML.substr(1));
 
 	// CHEAPEST PLAN DISPLAY
-	finalResult.innerHTML = bestPrice == +simplePrice.innerHTML ? "Simples" : bestPrice == +bihourlyPrice.innerHTML ? "Bi-Horária" : "Tri-Horária";
+	finalResult.innerHTML =
+		bestPrice == +simplePrice.innerHTML.substr(1) ? "Simples" : bestPrice == +bihourlyPrice.innerHTML.substr(1) ? "Bi-Horária" : "Tri-Horária";
 
 	// RESULTS DISPLAY
 	results.style.display = "flex";
@@ -119,25 +134,25 @@ submitButton.addEventListener("click", function (e) {
 
 // RETRY CLICK
 retryButton.addEventListener("click", function (e) {
+	// INPUTS RESET
+	emptyHours.value = "";
+	fullHours.value = "";
+	edgeHours.value = "";
+
+	// SELECT RESET
+	selectedValue.innerHTML = options[2].children[1].innerHTML;
+	options[2].children[0].checked = true;
+
 	// SCROLL TO TOP
 	window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
 
 	// HIDE RESULTS
 	setTimeout(() => {
-		// SELECT RESET
-		selectedValue.innerHTML = options[2].children[1].innerHTML;
-		options[2].children[0].checked = true;
-
 		// PRICES RESET
 		simplePrice.innerHTML = "";
 		bihourlyPrice.innerHTML = "";
 		trihourlyPrice.innerHTML = "";
 
-		// INPUTS RESET
-		emptyHours.value = "";
-		fullHours.value = "";
-		edgeHours.value = "";
-
 		results.style.display = "none";
-	}, 400);
+	}, 750);
 });
