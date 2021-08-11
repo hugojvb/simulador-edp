@@ -85,9 +85,7 @@ const calculatePrices = () => {
 	const power = +selectedValue.innerHTML;
 
 	// DECLARE SUMS
-	let simpleSum;
-	let bihourlySum;
-	let trihourlySum;
+	let simpleSum, bihourlySum, trihourlySum;
 
 	// CALCULATE SUMS
 	if (power <= 20.7) {
@@ -130,8 +128,17 @@ submitButton.addEventListener("click", function (e) {
 	bihourlyPrice.innerHTML = bihourlySum ? "€" + Math.round((powerPrice + bihourlySum) * 100) / 100 : "N/A";
 	trihourlyPrice.innerHTML = trihourlySum ? "€" + Math.round((powerPrice + trihourlySum) * 100) / 100 : "N/A";
 
+	// FILTER VALID PLANS
+	let simpleFiltered = Infinity,
+		bihourlyFiltered = Infinity,
+		trihourlyFiltered = Infinity;
+
+	if (Boolean(+simplePrice?.innerHTML.substr(1))) simpleFiltered = +simplePrice?.innerHTML.substr(1);
+	if (Boolean(+bihourlyPrice?.innerHTML.substr(1))) bihourlyFiltered = +bihourlyPrice?.innerHTML.substr(1);
+	if (Boolean(+trihourlyPrice?.innerHTML.substr(1))) trihourlyFiltered = +trihourlyPrice?.innerHTML.substr(1);
+
 	// CHEAPEST PRICE
-	const bestPrice = Math.min(+simplePrice.innerHTML.substr(1), +bihourlyPrice.innerHTML.substr(1), +trihourlyPrice.innerHTML.substr(1));
+	const bestPrice = Math.min(simpleFiltered, bihourlyFiltered, trihourlyFiltered);
 
 	// CHEAPEST PLAN DISPLAY
 	finalResult.innerHTML =
