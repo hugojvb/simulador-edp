@@ -46,7 +46,8 @@
 }
 
 .logo {
-	height: 20em;
+	height: 10em;
+	margin: 3em;
 	user-select: none;
 }
 
